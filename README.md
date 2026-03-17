@@ -31,3 +31,20 @@ python service.py 5002
 python client.py
 
 The client will randomly call one of the service instances.
+
+## Optional: Service Mesh Discovery
+
+In larger distributed systems, service discovery can also be implemented using a service mesh such as Istio or Linkerd. 
+In a service mesh architecture, each service runs alongside a sidecar proxy. 
+
+Instead of the client directly handling service discovery and routing, communication flows as:
+
+App → Sidecar Proxy → Service Mesh → Sidecar Proxy → App
+
+The sidecar proxies handle:
+
+- Traffic routing (load balancing, version routing)
+- Observability (metrics, logging, tracing)
+- Security (mTLS encryption between services)
+
+This approach removes networking logic from application code and provides better control, monitoring, and security in large-scale microservice environments.
